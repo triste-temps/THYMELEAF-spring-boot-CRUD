@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- Déclaration pour utiliser les expression Thymeleaf  -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hello World</title>
+<!-- Lien à notre css local -->
+<!-- Avec spring boot le css ce déclare dans le /static -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+	<h1>Hello World!</h1>
+	
+	<!-- Expression Thymeleaf -->
+	<p th:text="'Les temps sur le serveur est:  ' + ${date}" class="test"/>
+
+</body>
+</html>
