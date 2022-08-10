@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- Déclaration pour utiliser les expression Thymeleaf  -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Liste des employés</title>
+<!-- Lien vers Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+	
+		<h3>Répertoire des employés</h3>
+		<hr>
+		
+			<!-- Ajout d'un bouton -->
+			<a th:href="@{/employes/afficherFormulaire}" class="btn btn-primary btn-sm mb-3">
+				Ajouter un employé
+			</a>
+		
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Prénom</th>
+					<th>Nom</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<!-- Expression Thymeleaf pour parcourir les données-->
+				
+				<tr th:each="tempEmploye : ${employes}">
+			
+					<td th:text="${tempEmploye.prenom}"/>
+					<td th:text="${tempEmploye.nom}" />	
+					<td th:text="${tempEmploye.email}" />	
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
