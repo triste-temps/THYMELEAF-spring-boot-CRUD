@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myapp.thymeleaf.entity.Employe;
 import com.myapp.thymeleaf.service.EmployeService;
@@ -59,6 +60,28 @@ public class EmployeController {
 		
 		// rediriger
 		return "redirect:/employes/liste";
+	}
+	
+	@GetMapping("/MAJFormulaire")
+	public String MAJFormulaire(@RequestParam("idEmploye") int id, Model mod) {
+		
+		// obtenir l'employé du service
+		Employe emp = employeService.trouverId(id);
+		
+		// définir l'employé comme attribut de modèle pour pré-remplir le formulaire
+		mod.addAttribute("employe", emp);
+		
+		return "employes/formulaire-employe";			
+	}
+	
+	@GetMapping("/supprimer")
+	public String supprimer(@RequestParam("idEmploye") int id) {
+		
+		// supprimer employe
+		employeService.supprimer(id);
+
+		return "redirect:/employes/liste";
+		
 	}
 
 }

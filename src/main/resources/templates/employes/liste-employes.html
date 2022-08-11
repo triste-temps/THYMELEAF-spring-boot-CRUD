@@ -34,10 +34,26 @@
 				<!-- Expression Thymeleaf pour parcourir les données-->
 				
 				<tr th:each="tempEmploye : ${employes}">
-			
+					
 					<td th:text="${tempEmploye.prenom}"/>
 					<td th:text="${tempEmploye.nom}" />	
 					<td th:text="${tempEmploye.email}" />	
+					
+					<!-- Bouton MAJ -->
+					<td>
+					<!-- Expression Thymeleaf et style Bootstrap-->
+						<a th:href="@{/employes/MAJFormulaire(idEmploye=${tempEmploye.id})}"
+							class="btn btn-info btn-sm">
+							Mettre à jour
+						</a>
+					<!-- Bouton supprimer & JS-->
+						<a th:href="@{/employes/supprimer(idEmploye=${tempEmploye.id})}"
+							class="btn btn-danger btn-sm"
+							onclick="if (!(confirm('Êtes-vous sûr de vouloir supprimer cette employé '))) return false">
+							Supprimer
+						</a>
+					</td>
+					
 				</tr>
 				
 			</tbody>
